@@ -19,12 +19,12 @@
 function isPrototypeOf(prototypeObj, dependentObject) {
   var proto = Object.getPrototypeOf(dependentObject);
 
-  if(prototypeObj === undefined || prototypeObj === null){
+  if (prototypeObj === undefined || prototypeObj === null) {
     throw new TypeError('The prototype Object is undefined or null.');
   }
 
-  while(proto !== null){
-    if(proto === prototypeObj){
+  while (proto !== null) {
+    if (proto === prototypeObj) {
 	  return true;
 	}
 	proto = Object.getPrototypeOf(proto);
@@ -34,7 +34,7 @@ function isPrototypeOf(prototypeObj, dependentObject) {
 };
 
 tests({
-  'It should throw an error if prototypeObj is undefined.': function(){
+  'It should throw an error if prototypeObj is undefined.': function () {
     var isTypeError = false;
 	var testObject = {};
 	try {
@@ -44,7 +44,7 @@ tests({
 	}
 	eq(isTypeError, true);
   },
-  'It should throw an error if prototypeObj is null.': function(){
+  'It should throw an error if prototypeObj is null.': function () {
 	var isTypeError = false;
 	var testObject = {};
 	try {
@@ -54,15 +54,15 @@ tests({
 	}
 	eq(isTypeError, true);
   },
-  'It should return true if the Object is in the prototypeObj chain.': function(){
+  'It should return true if the Object is in the prototypeObj chain.': function () {
 	var canine = {
-	  bark: function() {
+	  bark: function () {
 	    console.log('bark');
 	  }
 	};
 
 	var dog = Object.create(canine);
-	  dog.fetch = function() {
+	  dog.fetch = function () {
 	    console.log('fetch');
 	  };
 		
@@ -73,15 +73,15 @@ tests({
 
 	eq(test, true);
   },
-  'It should return false if the Object is not in the prototypeObj chain.': function(){
+  'It should return false if the Object is not in the prototypeObj chain.': function () {
 	var canine = {
-	  bark: function() {
+	  bark: function () {
 	    console.log('bark');
 	  }
 	};
 
 	var dog = Object.create(canine);
-	  dog.fetch = function() {
+	  dog.fetch = function () {
 	    console.log('fetch');
 	  };
 		
@@ -92,15 +92,15 @@ tests({
 
 	eq(test, false);
   },
-  'It should work for any number of prototype links.': function(){
+  'It should work for any number of prototype links.': function () {
 	var canine = {
-	  bark: function() {
+	  bark: function () {
 	    console.log('bark');
 	  }
 	};
 
 	var dog = Object.create(canine);
-	  dog.fetch = function() {
+	  dog.fetch = function () {
 	    console.log('fetch');
 	  };
 		
